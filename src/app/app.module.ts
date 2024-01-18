@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgIf } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { HomePageComponent } from './home-page/home-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomePageComponent
+    HomePageComponent,
+    HttpClientModule,
+    NgIf
   ],
   providers: [],
   bootstrap: [AppComponent]
