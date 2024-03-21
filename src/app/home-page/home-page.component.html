@@ -1,14 +1,26 @@
-<div *ngIf="weatherInfo$ | async as weatherInfo;">
+@if (weatherInfo$ | async; as weatherInfo){
+  <div class="flex flex-col items-center justify-center text-6xl">
+    <div class="flex justify-between">
+      <h2 class="text-4xl">Current Temperature</h2>
+      <span class="text-4xl">{{weatherInfo.currentTemp}}°{{tempType()}}</span>
+    </div>
+    <div class="flex justify-between">
+      <h2 class="text-4xl">Feels Like</h2>
+      <span class="text-4xl">{{weatherInfo.feelsLike}}°{{tempType()}}</span>
+    </div>
+    <div class="flex justify-between">
+      <h2 class="text-4xl">High</h2>
+      <span class="text-4xl">{{weatherInfo.maxTemp}}°</span>
+    </div>
+    <div class="flex justify-between">
+      <h2 class="text-4xl">Low</h2>
+      <span class="text-4xl">{{weatherInfo.minTemp}}°</span>
+    </div>
+    <button class="bg-gray-200 rounded p-2" *ngIf="tempType() === 'F'" (click)="getCelciusTemps()">Farenheit</button>
+    <button class="bg-gray-200 rounded p-2" *ngIf="tempType() === 'C'" (click)="getFarenheitTemps()">Celsius</button>
 
-  {{weatherInfo.maxTemp}}
-  {{weatherInfo.minTemp}}
-  {{weatherInfo.feelsLike}}
-  {{weatherInfo.currentTemp}}
-
-  <button *ngIf="tempType() === 'farenheit'" (click)="getCelciusTemps()">Get Celcius</button>
-  <button *ngIf="tempType() === 'celcius'" (click)="getFarenheitTemps()">Get Farenheit</button>
-</div>
-
-
-<ng-container *ngIf="!(weatherInfo$ | async) ">No weather returned</ng-container>
-
+  </div>
+}
+@else {
+  <div>No weather data</div>
+}

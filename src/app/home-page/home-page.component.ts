@@ -13,7 +13,7 @@ import { Observable, map, tap } from 'rxjs';
 })
 export class HomePageComponent implements OnInit {
   public weatherInfo$: Observable<weatherInfo> | undefined;
-  tempType = signal('farenheit');
+  tempType = signal('F');
 
   constructor(private _weather: WeatherServiceService) { }
 
@@ -38,7 +38,7 @@ export class HomePageComponent implements OnInit {
           maxTemp: this.convertToCelsiusFromKelvin(data.main.temp_max),
           minTemp: this.convertToCelsiusFromKelvin(data.main.temp_min)
       }
-      this.tempType.set('celcius');
+      this.tempType.set('C');
       return info;
       })
     );
@@ -53,7 +53,7 @@ export class HomePageComponent implements OnInit {
           maxTemp: this.convertToFarenheitFromKelvin(data.main.temp_max),
           minTemp: this.convertToFarenheitFromKelvin(data.main.temp_min)
       }
-      this.tempType.set('farenheit');
+      this.tempType.set('F');
       return info;
       })
     );
