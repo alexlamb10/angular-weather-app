@@ -36,7 +36,7 @@ export class WeatherServiceService {
     });
   }
 
-  private getWeatherByLocation(latitude: number, longitude: number): Observable<any> {
+  private getWeatherByLocation(latitude: number, longitude: number) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.apiKey}`;
 
     return this._http.get(apiUrl);

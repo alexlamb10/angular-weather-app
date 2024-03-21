@@ -1,5 +1,14 @@
-<p>home-page works!</p>
-<div>
-  weather: <div>{{ weatherInfo | json}}</div>
+<div *ngIf="weatherInfo$ | async as weatherInfo;">
+
+  {{weatherInfo.maxTemp}}
+  {{weatherInfo.minTemp}}
+  {{weatherInfo.feelsLike}}
+  {{weatherInfo.currentTemp}}
+
+  <button *ngIf="tempType() === 'farenheit'" (click)="getCelciusTemps()">Get Celcius</button>
+  <button *ngIf="tempType() === 'celcius'" (click)="getFarenheitTemps()">Get Farenheit</button>
 </div>
-<div #noWeather>No weather returned</div>
+
+
+<ng-container *ngIf="!(weatherInfo$ | async) ">No weather returned</ng-container>
+

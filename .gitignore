@@ -43,3 +43,7 @@ Thumbs.db
 
 # Secrets
 config.ts
+
+
+.nx
+.nx/cache
